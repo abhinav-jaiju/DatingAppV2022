@@ -1,0 +1,39 @@
+
+
+
+<div class="container">
+ 
+    <h3>Login here...</h3>
+    <hr>
+    <form [formGroup] = "loginForm" (ngSubmit) = "loginCredentials()">
+        
+      <!--User Name Control-->
+      <div class="form-gorup">
+            <p>
+              <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="UserName" placeholder="Enter User Name" name="UserName"
+                formControlName = "UserName" class="form-control" minlength="5" required
+                [ngClass] = "{'is-invalid' : formControls.UserName.touched && formControls.UserName.invalid }"
+                autocomplete="off">
+            </p>
+        </div>
+
+      <div>
+          <p>
+            <label for="exampleFormControlInput1" class="form-label">Password</label>
+              <input type="password" placeholder="Enter Password"
+              name="UserPassword"
+                formControlName = "UserPassword" class="form-control" minlength="5" required
+                [ngClass] = "{'is-invalid' : formControls.UserPassword.touched && formControls.UserPassword.invalid }">
+          </p>
+      </div>
+    <div>
+        <button class="btn btn-primary">Login</button>
+    </div>
+    <div *ngIf = "errors" style="color:crimson; text-align:left;">
+      {{errors}}
+    </div>
+    </form>
+
+</div>
+

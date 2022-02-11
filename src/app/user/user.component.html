@@ -1,0 +1,181 @@
+<nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+    <div class="container-fluid">
+      <img src="../assets/BRO!.png" alt="" id="nav-img">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Update inventory/Html/inventory.html">Inventory</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Generating Credentials/html/adminhome.html">Add Staff</a>
+          </li>   
+        </ul>
+        <form class="d-flex">
+          
+            <button class="btn btn-outline-danger"  (click) = "logout()">Log Out</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+<!-- Template-Drivern Form -->
+
+<form name ="empform" #form="ngForm" autocomplete="off" (ngSubmit) = "onSubmit(form)">
+    <!--Employee ID Hidden-->
+    <input type="hidden" name="Users1" [(ngModel)] = "userService.formData.Users1" >
+
+    <!-- Employee Name-->
+    <div class="form-group">
+        <label>Full Name :  </label>
+        <input type="text" name = "Name"
+        #Name = "ngModel"
+        [(ngModel)] = "userService.formData.Name"
+        class="form-control"
+        placeholder="Enter Full Name"
+        required minlength="5" maxlength="25"
+        [ngClass] = "{'is-invalid': Name.touched && Name.invalid}"/>
+        <!--Validation-->
+        <div class="validation-error" *ngIf = "Name.touched && Name.invalid">
+           
+            <div *ngIf = "Name.errors.required">
+                 Name is required
+            </div>
+        </div>
+    </div>
+
+     <!--Designation-->
+     <div class="form-group">
+        <label>Age :  </label>
+        <input type="number" name = "Age"
+        #Age = "ngModel"
+        [(ngModel)] = "userService.formData.Age"
+        class="form-control"
+        placeholder="Enter Age"
+        required minlength="5" 
+        [ngClass] = "{'is-invalid': Age.touched && Age.invalid}"/>
+        <!--Validation-->
+        <div class="validation-error" *ngIf = "Age.touched && Age.invalid">
+           
+            <div *ngIf = "Age.errors.required">
+                 Designation required
+            </div>
+        </div>
+    </div>
+
+    <!--Occupation-->
+    <div class="form-group">
+        <label>Occupation :  </label>
+        <input type="text" name = "Occupation"
+        #Occupation = "ngModel"
+        [(ngModel)] = "userService.formData.Occupation"
+        class="form-control"
+        placeholder="EnterOccupation"
+        required minlength="4" maxlength="25"
+        [ngClass] = "{'is-invalid': Occupation.touched && Occupation.invalid}"/>
+        <!--Validation-->
+        <div class="validation-error" *ngIf = "Occupation.touched && Occupation.invalid">
+           
+            <div *ngIf = "Occupation.errors.required">
+                Age required
+            </div>
+        </div>
+    </div>
+
+    <!--Phone-->
+    <div class="form-group">
+        <label>Contact :  </label>
+        <input type="number" name = "Phone"
+        #Phone = "ngModel"
+        [(ngModel)] = "userService.formData.Phone"
+        class="form-control"
+        placeholder="Enter Contact"
+        required minlength="10" maxlength="10"
+        [ngClass] = "{'is-invalid': Phone.touched && Phone.invalid}"/>
+        <!--Validation-->
+        <div class="validation-error" *ngIf = "Phone.touched && Phone.invalid">
+           
+            <div *ngIf = "Phone.errors.required">
+                 Contact required
+            </div>
+        </div>
+    </div>
+
+    <!--Password-->
+    <div class="form-group">
+        <label>Password :  </label>
+        <input type="password" name = "Password"
+        #Password = "ngModel"
+        [(ngModel)] = "userService.formData.Password"
+        class="form-control"
+        placeholder="Enter Age"
+        required minlength="5" maxlength="25"
+        [ngClass] = "{'is-invalid': Password.touched && Password.invalid}"/>
+        <!--Validation-->
+        <div class="validation-error" *ngIf = "Password.touched && Password.invalid">
+           
+            <div *ngIf = "Password.errors.required">
+                Password required
+            </div>
+        </div>
+    </div>
+    <!--Department dropdown-->
+    <div class="form-group">
+        <label>Hobby :  </label>
+        <select name="HobbyId" id="HobbyId"
+        class="form-control"
+        #HobbyId = "ngModel"
+        required
+        [(ngModel)] = "userService.formData.HobbyId"
+        >
+        <option value="0" disabled> Select Hobby1</option>
+        <option *ngFor = " let dept of userService.hobby"
+        value="{{dept.HobbyId}}">{{dept. Hobby1}}
+        </option>
+        </select>
+        <!--Validation-->
+        <div class="validation-error" *ngIf = "HobbyId.touched && HobbyId.invalid">
+           
+            <div *ngIf = "HobbyId.errors.required">
+                Hobby required
+            </div>
+        </div>
+    </div>
+
+    <!--Department dropdown-->
+    <div class="form-group">
+        <label>FoodId :  </label>
+        <select name="FoodId" id="FoodId"
+        class="form-control"
+        #FoodId = "ngModel"
+        required
+        [(ngModel)] = "userService.formData.FoodId"
+        >
+        <option value="0" disabled> Select FOod</option>
+        <option *ngFor = " let dept of userService.food"
+        value="{{dept.FoodId}}">{{dept.Food1}}
+        </option>
+        </select>
+        <!--Validation-->
+        <div class="validation-error" *ngIf = "FoodId.touched && FoodId.invalid">
+           
+            <div *ngIf = "FoodId.errors.required">
+                 Category required
+            </div>
+        </div>
+    </div>
+
+    <!--Submit-->
+    <br>
+    <div class="form-group">
+        <button type="submit" 
+        class="btn btn-lg btn-primary form-control"
+        [disabled] = "!(form.valid && form.dirty)">Submit</button>
+    </div>
+
+    </form>

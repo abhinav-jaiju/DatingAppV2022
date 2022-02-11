@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+    <div class="container-fluid">
+      <img src="../assets/BRO!.png" alt="" id="nav-img">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" [routerLink] = "'/admin'">Admin Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Generating Credentials/html/adminhome.html">Add Staff</a>
+          </li>   
+        </ul>
+        <form class="d-flex">
+          
+          <button class="btn btn-outline-danger"  (click) = "logout()">Log Out</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+<div class="header">
+    <div class="form-control">
+        <!--Search functionality-->
+        <input type="text" class="form-control" placeholder="Search text here..."[(ngModel)]="filter" >
+    </div>
+    <!--
+        [] --- property binding
+        () --- event binding 
+        ([])--- banana box for event and property --([ngModel])
+    -->
+    <button [routerLink]="'/user'" href="/user" class="btn btn-outline-secondary" style="float: right; margin-top: 10px; margin-bottom: 10px;" 
+    >Add Post</button>
+</div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Occupation</th>
+                <th>Phone</th>
+                <th>Hobby</th>
+                <th>Food</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor= "let emp of userService.user |filter: filter | paginate :{ itemsPerPage: 4, currentPage: page}">
+                <td>{{emp.Users1}}</td>
+                <td>{{emp.Name}}</td>
+                <td>{{emp.Occupation}}</td>
+                <td>{{emp.Phone}}</td>
+                <td>{{emp.HobbyId}}</td>
+                <td>{{emp.FoodId}}</td>
+                <td>
+                    <button class="btn btn-sm btn-info" (click)="updateUserById(emp.Users1)"> Edit </button>
+                    &nbsp;
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(emp.Users1)"> X </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="footer">
+        <!--Pageination footer-->
+        <pagination-controls (pageChange) = "page = ($event)"></pagination-controls>
+    </div>

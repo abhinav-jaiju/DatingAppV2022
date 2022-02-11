@@ -1,0 +1,21 @@
+body{
+    /* background-color: #c1f8ee; */
+    background-image: linear-gradient(to right top, #023682, #0063ac, #0091cc, #00bee5, #5decf9);
+    height: 100%;
+}
+.flex-container.container-fluid{
+    background-color:  #cccac1;
+    color: #fff;
+}
+.btn.btn-success{
+    margin-right: 50%;
+}
+.card{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 40px;
+    text-align: center;
+}
+.container{
+    align-items: center;
+}

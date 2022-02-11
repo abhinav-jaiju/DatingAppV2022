@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+    <div class="container-fluid">
+      <img src="../assets/BRO!.png" alt="" id="nav-img">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"[routerLink] = "'/home'">Home</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          
+          <button class="btn btn-outline-danger"  (click) = "logout()">Log Out</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container"  *ngFor= "let emp of userService.user |filter: filter | paginate :{ itemsPerPage: 4, currentPage: page}" >
+
+    <div class="card-group">
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Name: {{emp.Name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Occupation: {{emp.Occupation}}</h6>
+                <p class="card-text"> Hobbies : {{emp.HobbyId}}</p>
+                <p class="card-text"> Favourite Food : {{emp.FoodId}}</p>
+                <Button class="btn btn-success">Like</Button>
+                <button class="btn btn-danger ">Dislike</button>
+            </div>
+        </div>
+    </div>
+</div>
